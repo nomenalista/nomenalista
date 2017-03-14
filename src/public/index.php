@@ -15,14 +15,8 @@ $app = new \Slim\App(["settings" => $config]);
 /*
 * Routes
 */
-$app->get('/users', function (Request $request, Response $response) {
+$app->get('/users', '\NomenaLista\classes\UsersController:index');
+$app->post('/users', '\NomenaLista\classes\UsersController:add');
 
-    $Users = new NomenaLista\models\Users;
-    $list = $Users->getAll();
-
-    $response->getBody()->write(var_export($list, true));
-
-    return $response;
-});
 
 $app->run();
