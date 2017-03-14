@@ -1,5 +1,22 @@
 {
+    "name": "arojunior/nome-na-lista",
+    "license": "MIT",
+    "description": "Party guests Manager",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Junior Oliveira",
+            "email": "arojunior@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "NomenaLista\\": ""
+        }
+    },
     "require": {
-        "slim/slim": "^3.7"
+        "php": ">=5.6.0",
+        "slim/slim": "^3.7",
+        "arojunior/php-orm-pdo": "^1.1"
     }
 }

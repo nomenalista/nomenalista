@@ -4,11 +4,25 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
-$app = new \Slim\App;
-$app->get('/hello/{name}', function (Request $request, Response $response) {
-    $name = $request->getAttribute('name');
-    $response->getBody()->write("Hello, $name");
+/*
+* Slim Framework Configution
+*/
+$config['displayErrorDetails'] = true;
+$config['addContentLengthHeader'] = false;
+
+$app = new \Slim\App(["settings" => $config]);
+
+/*
+* Routes
+*/
+$app->get('/users', function (Request $request, Response $response) {
+
+    $Users = new NomenaLista\models\Users;
+    $list = $Users->getAll();
+
+    $response->getBody()->write(var_export($list, true));
 
     return $response;
 });
+
 $app->run();
