@@ -1,5 +1,5 @@
 <?php
-namespace NomenaLista\models\contracts;
+namespace NomenaLista\model\contracts;
 
 interface UsersInterface
 {

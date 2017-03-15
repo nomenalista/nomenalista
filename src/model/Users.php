@@ -1,8 +1,8 @@
 <?php
-namespace NomenaLista\models;
+namespace NomenaLista\model;
 
-use NomenaLista\models\AppModel;
-use NomenaLista\models\contracts\UsersInterface;
+use NomenaLista\model\AppModel;
+use NomenaLista\model\contracts\UsersInterface;
 
 class Users implements UsersInterface
 {

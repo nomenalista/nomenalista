@@ -1,5 +1,5 @@
 <?php
-namespace NomenaLista\models;
+namespace NomenaLista\model;
 
 use SimpleORM\core\model\Model;
 

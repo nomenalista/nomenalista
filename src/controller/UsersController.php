@@ -1,7 +1,7 @@
 <?php
-namespace NomenaLista\classes;
+namespace NomenaLista\controller;
 
-use \NomenaLista\models\Users as Users;
+use \NomenaLista\model\Users as Users;
 
 class UsersController
 {
