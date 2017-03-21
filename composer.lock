@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9ff276e5ce18863cba4620270148fddc",
-    "content-hash": "4c11e718d05660f831f5e57686ebf88d",
+    "hash": "c9fff8b8e3240571fd2e70e713a02119",
+    "content-hash": "d339682e02799f5a71d42f93138452d4",
     "packages": [
         {
             "name": "arojunior/php-orm-pdo",
-            "version": "1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/arojunior/php-orm-pdo.git",
-                "reference": "6c388efe18f4d5bb4cc3c8f81e468ac9b922a002"
+                "reference": "d9cc25e24bba5c806e2e9c847acc39da69bae0bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/arojunior/php-orm-pdo/zipball/6c388efe18f4d5bb4cc3c8f81e468ac9b922a002",
-                "reference": "6c388efe18f4d5bb4cc3c8f81e468ac9b922a002",
+                "url": "https://api.github.com/repos/arojunior/php-orm-pdo/zipball/d9cc25e24bba5c806e2e9c847acc39da69bae0bb",
+                "reference": "d9cc25e24bba5c806e2e9c847acc39da69bae0bb",
                 "shasum": ""
             },
             "require": {
@@ -40,8 +40,8 @@
                     "email": "arojunior@gmail.com"
                 }
             ],
-            "description": "Micro PHP ORM Framework",
-            "time": "2017-03-14 11:35:25"
+            "description": "Micro PHP ORM Library",
+            "time": "2017-03-21 20:12:24"
         },
         {
             "name": "container-interop/container-interop",
@@ -337,7 +337,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "arojunior/php-orm-pdo": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
