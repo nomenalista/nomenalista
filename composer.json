@@ -10,11 +10,11 @@
         }
     ],
     "config": {
-            "vendor-dir": "/src/vendor"
+            "vendor-dir": "src/vendor"
     },
     "autoload": {
         "psr-4": {
-            "NomenaLista\\": "/src"
+            "NomenaLista\\": "src"
         }
     },
     "require": {
