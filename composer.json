@@ -9,9 +9,12 @@
             "email": "arojunior@gmail.com"
         }
     ],
+    "config": {
+            "vendor-dir": "/src/vendor"
+    },
     "autoload": {
         "psr-4": {
-            "NomenaLista\\": ""
+            "NomenaLista\\": "/src"
         }
     },
     "require": {
