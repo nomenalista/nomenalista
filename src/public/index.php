@@ -15,8 +15,8 @@ $app = new \Slim\App(["settings" => $config]);
 /*
 * Routes
 */
+$app->get('/', '\NomenaLista\controller\IndexController:index');
 $app->post('/login', '\NomenaLista\controller\LoginController:index');
 $app->post('/users', '\NomenaLista\controller\UsersController:add');
-
 
 $app->run();
