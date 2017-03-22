@@ -8,10 +8,12 @@ class LoginController
 {
 
   protected $Users;
+  public $Errors;
 
   public function __construct()
   {
        $this->Users = new Users;
+       $this->Errors = new Errors;
   }
 
   public function index($request, $response)
@@ -23,17 +25,20 @@ class LoginController
 
   private function loginUser($data)
   {
-      $Errors = new Errors;
-
       if ( ! $this->Users->exists($data['email'])) {
-          return $Errors->getError(1);
+          return $this->Errors->getError(1);
       }
 
       if ( ! $this->Users->validatePassword($data)) {
-          return $Errors->getError(2);
+          return $this->Errors->getError(2);
       }
 
-      return $this->Users->fetch();
+      $data = $this->Users->fetch();
+      
+      return [
+          'isLogged' => true,
+          'token'    => $this->Users->Lib->hash($data['id'])
+      ];
   }
 
 }

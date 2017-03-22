@@ -3,14 +3,18 @@ namespace NomenaLista\model;
 
 use NomenaLista\model\AppModel;
 use NomenaLista\model\contracts\UsersInterface;
+use NomenaLista\lib\UsersLib;
 
 class Users extends AppModel implements UsersInterface
 {
     public $pk = 'email';
+    public $Lib;
 
-    public function getAll()
+    public function __construct()
     {
-        return $this->findAll();
+        parent::__construct();
+
+        $this->Lib = new UsersLib;
     }
 
     public function store($data)
@@ -31,7 +35,7 @@ class Users extends AppModel implements UsersInterface
     private function hashPassword($data)
     {
         return array_merge($data, [
-          'password' => password_hash($data['password'], PASSWORD_DEFAULT)
+          'password' => $this->Lib->hash($data['password'])
         ]);
     }
 
