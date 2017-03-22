@@ -15,16 +15,24 @@ class Users extends AppModel implements UsersInterface
 
     public function store($data)
     {
-        if ($this->exists($data['email'])) {
-            return ['error' => 'Username already exists'];
-        }
-
-        return $this->save($data);
+        return $this->save(self::hashPassword($data));
     }
 
     public function remove($id)
     {
 
+    }
+
+    public function validatePassword($data)
+    {
+        return (password_verify($data['password'], $this->fetch()['password']));
+    }
+
+    private function hashPassword($data)
+    {
+        return array_merge($data, [
+          'password' => password_hash($data['password'], PASSWORD_DEFAULT)
+        ]);
     }
 
 }

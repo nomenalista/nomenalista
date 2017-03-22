@@ -2,6 +2,7 @@
 namespace NomenaLista\controller;
 
 use \NomenaLista\model\Users as Users;
+use \NomenaLista\lib\ErrorsLib as Errors;
 
 class LoginController
 {
@@ -17,11 +18,22 @@ class LoginController
   {
       $data = $request->getParsedBody();
 
-      if ($this->Users->exists($data['email'])) {
-          return $response->withJson($this->Users->fetch());
+      return $response->withJson(self::loginUser($data));
+  }
+
+  private function loginUser($data)
+  {
+      $Errors = new Errors;
+
+      if ( ! $this->Users->exists($data['email'])) {
+          return $Errors->getError(1);
       }
 
-      return $response->withJson(['msg' => 'not found']);
+      if ( ! $this->Users->validatePassword($data)) {
+          return $Errors->getError(2);
+      }
+
+      return $this->Users->fetch();
   }
 
 }
