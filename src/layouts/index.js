@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import Navigation from './../components/Navigation'
 
-import '../assets/App.css'
 import logo from '../assets/logo.svg'
 
 const Layout = ({ children }) => (

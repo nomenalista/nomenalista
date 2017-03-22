@@ -1,11 +1,13 @@
 import axios from 'axios'
 import R from 'ramda'
 import {createAction} from 'redux-actions'
+
+import {apiServer} from '../index'
 import {loggedIn} from './../Auth'
 
-const LOGIN_SENDING = 'modules/Login/LOGIN_SENDING'
-const LOGIN_SUCCESS = 'modules/Login/LOGIN_SUCCESS'
-const LOGIN_ERROR =  'modules/Login/LOGIN_ERROR'
+const LOGIN_SENDING = 'modules/Login/SENDING'
+const LOGIN_SUCCESS = 'modules/Login/SUCCESS'
+const LOGIN_ERROR =  'modules/Login/ERROR'
 
 const loginSending = createAction(LOGIN_SENDING)
 const loginError   = createAction(LOGIN_ERROR)
@@ -42,7 +44,7 @@ export const sendFormLogin = (values, dispatch) => {
 
     dispatch(loginSending())
 
-    axios.post('/api/login', values)
+    axios.post(`${apiServer}/login`, values)
     .then(res => {
         const {type, payload} = res.data
 

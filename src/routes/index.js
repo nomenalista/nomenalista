@@ -2,12 +2,12 @@ import Layout from './../layouts'
 
 import Home from './Home'
 import About from './About'
-import Login from './Login'
+import CadastroLogin from './Cadastro'
 
 const Routes = [
         {
             path: '/',
-            component: Login
+            component: CadastroLogin
         }, {
             path: '/home',
             component: Layout,
