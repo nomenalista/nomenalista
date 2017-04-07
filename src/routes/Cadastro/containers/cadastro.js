@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Form from '../components/FormCadastro'
-import {sendFormCadastro} from './../../../modules/Cadastro'
+import {sendFormCadastro} from './../../../modules/Cadastro/actions'
 import {Alert, Loader} from './../../../components'
 import {validateSession} from './../../../components/Session'
-import {loggedIn} from './../../../modules/Auth'
+import {loggedIn} from './../../../modules/Auth/actions'
 
-class Cadastro extends Component {
+class CadastroContainer extends Component {
 
     handleSubmit(values, dispatch) {
         sendFormCadastro(values, dispatch)
@@ -19,7 +19,6 @@ class Cadastro extends Component {
             dispatch(loggedIn({token}))
             return validateSession(isLogged)
         }
-
     }
 
     render() {
@@ -52,4 +51,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Cadastro)
+export default connect(mapStateToProps)(CadastroContainer)

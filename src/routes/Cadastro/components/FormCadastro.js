@@ -8,7 +8,7 @@ const Form = (props) => {
             <div className="form-group">
                 <label>Nome</label>
                 <Field type="text"
-                    name="nome"
+                    name="name"
                     component="input"
                     placeholder="Nome"
                     className="form-control" />
@@ -16,7 +16,7 @@ const Form = (props) => {
             <div className="form-group">
                 <label>E-mail</label>
                 <Field type="text"
-                    name="login"
+                    name="email"
                     component="input"
                     placeholder="E-mail"
                     className="form-control" />
@@ -24,7 +24,7 @@ const Form = (props) => {
             <div className="form-group">
                 <label>Estabelecimento</label>
                 <Field type="text"
-                    name="estabelecimento"
+                    name="company_name"
                     component="input"
                     placeholder="Nome do estabelecimento/casa"
                     className="form-control" />
@@ -32,7 +32,7 @@ const Form = (props) => {
             <div className="form-group">
                 <label>Senha</label>
                 <Field type="password"
-                    name="senha"
+                    name="password"
                     component="input"
                     placeholder="Senha"
                     className="form-control" />
@@ -40,7 +40,7 @@ const Form = (props) => {
             <div className="form-group">
                 <label>Re-digite a Senha</label>
                 <Field type="password"
-                    name="re_senha"
+                    name="password_check"
                     component="input"
                     placeholder="Re-digite a Senha"
                     className="form-control" />

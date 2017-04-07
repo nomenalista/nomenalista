@@ -1,18 +1,23 @@
 import React, { PropTypes } from 'react'
-import Navigation from './../components/Navigation'
 
-import logo from '../assets/logo.svg'
+import Navigation from './../components/Navigation'
+import Menu from './../components/Menu'
 
 const Layout = ({ children }) => (
     <div>
         <Navigation />
-        <div className="App">
-            <div className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <h2>Welcome to React</h2>
-            </div>
-            <div className="App-intro">
-                { children }
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-lg-3">
+                    <Menu />
+                </div>
+                <div className="col-lg-9">
+                    <div className="panel panel-primary">
+                      <div className="panel-body">
+                        { children }
+                      </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

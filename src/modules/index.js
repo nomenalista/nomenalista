@@ -10,24 +10,12 @@ import Login from './Login'
 
 const combineReducer = combineReducers({
     form : formReducer,
+    Login,
     Auth,
-    Cadastro,
-    Login
+    Cadastro
 })
 
-/*
-* Store
-*/
 export const store = createStore(combineReducer, {}, compose(
     applyMiddleware(promiseMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
-
-/*
-* Api Server
-*/
-import R from 'ramda'
-
-export const apiServer = (R.equals(window.location.hostname, 'localhost'))
-                         ? 'http://nomenalista.github.dev:8000'
-                         : 'https://nomenalista.herokuapp.com/'

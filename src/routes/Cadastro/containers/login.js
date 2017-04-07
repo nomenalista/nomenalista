@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Form from '../components/FormLogin'
-import {sendFormLogin} from '../../../modules/Login'
+import {sendFormLogin} from '../../../modules/Login/actions'
 import {Alert, Loader} from '../../../components'
 import {checkSession} from './../../../components/Session'
 
-class Login extends Component {
+class LoginContainer extends Component {
 
     handleSubmit(values, dispatch) {
         return sendFormLogin(values, dispatch)
@@ -43,4 +43,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(LoginContainer)

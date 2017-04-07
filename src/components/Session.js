@@ -3,7 +3,7 @@ import { browserHistory }   from 'react-router'
 export const validateSession = isLogged => {
 
     if ( ! isLogged) {
-        return browserHistory.push('/cadastro')
+        return browserHistory.push('/')
     }
 
     return true
@@ -12,7 +12,7 @@ export const validateSession = isLogged => {
 export const checkSession = isLogged => {
 
     if (isLogged) {
-        return browserHistory.push('/minha-conta')
+        return browserHistory.push('/home')
     }
 
     return false

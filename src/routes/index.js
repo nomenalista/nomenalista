@@ -1,7 +1,7 @@
 import Layout from './../layouts'
 
 import Home from './Home'
-import About from './About'
+import Eventos from './Eventos'
 import CadastroLogin from './Cadastro'
 
 const Routes = [
@@ -12,7 +12,9 @@ const Routes = [
             path: '/home',
             component: Layout,
             indexRoute: Home,
-            childRoutes: [About]
+            childRoutes: [
+                Eventos
+            ]
         }
     ]
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import Cadastro from './containers/cadastro'
-import Login from './containers/login'
+import CadastroContainer from './containers/cadastro'
+import LoginContainer from './containers/login'
 
 import Logo from '../../assets/logo.png'
 
@@ -14,10 +14,10 @@ const CadastroLogin = () => (
         <br />
         <div className="row">
             <div className="col-md-5">
-                <Login/>
+                <LoginContainer />
             </div>
             <div className="col-md-5 col-md-offset-2">
-                <Cadastro/>
+                <CadastroContainer />
             </div>
         </div>
     </div>

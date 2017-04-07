@@ -1,62 +1,30 @@
-import axios from 'axios'
-import R from 'ramda'
-import {createAction} from 'redux-actions'
+import {handleActions} from 'redux-actions'
 
-import {apiServer} from '../index'
-import {loggedIn} from './../Auth'
-
-const LOGIN_SENDING = 'modules/Login/SENDING'
-const LOGIN_SUCCESS = 'modules/Login/SUCCESS'
-const LOGIN_ERROR =  'modules/Login/ERROR'
-
-const loginSending = createAction(LOGIN_SENDING)
-const loginError   = createAction(LOGIN_ERROR)
-const loginSuccess = createAction(LOGIN_SUCCESS)
+import {LOGIN_SENDING, LOGIN_SUCCESS, LOGIN_ERROR} from './actions'
 
 const initialState = {
     text        : null,
-    enviando    : false
+    sending     : false
 }
 
-export default (state = initialState, action) => {
-    switch (action.type) {
-        case LOGIN_SENDING:
-            return {...state,
-                    text        : "Logando...",
-                    enviando    : true
-                    }
-        case LOGIN_SUCCESS:
-            return {...state,
-                    text        : null,
-                    enviando    : false
-                  }
-        case LOGIN_ERROR:
-          return {...state,
-                  text        : action.payload.msg,
-                  enviando    : false
-                }
-      default:
-        return state;
-    }
-}
+const reducer = handleActions({
 
-export const sendFormLogin = (values, dispatch) => {
+    [LOGIN_SENDING] : (state, action) => ({
+        ...state,
+        sending    : true
+    }),
 
-    dispatch(loginSending())
+    [LOGIN_SUCCESS] : (state, action) => ({
+        ...state,
+        sending     : false
+    }),
 
-    axios.post(`${apiServer}/login`, values)
-    .then(res => {
-        const {type, payload} = res.data
-
-        if (R.equals(type, LOGIN_SUCCESS)) {
-            dispatch(loginSuccess())
-            return dispatch(loggedIn(payload.token))
-        }
-
-        return dispatch(res.data)
+    [LOGIN_ERROR]   : (state, action) => ({
+        ...state,
+        text        : action.payload.msg,
+        sending     : false
     })
-    .catch(err => {
-        dispatch(loginError({msg : 'Erro ao logar'}))
-        console.log(err)
-    })
-}
+
+}, initialState)
+
+export default reducer
