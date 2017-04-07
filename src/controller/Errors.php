@@ -2,15 +2,15 @@
 
 namespace NomenaLista\controller;
 
-use \NomenaLista\model\Errors as Errors;
+use \NomenaLista\model\Errors as model;
 
-class ErrorsController {
+class Error {
 
     protected $Errors;
 
     public function __construct()
     {
-        $this->Errors = new Errors;
+        $this->Errors = new model\Errors;
     }
 
     public function index($request, $response)

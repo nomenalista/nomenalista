@@ -1,12 +1,12 @@
 <?php
 namespace NomenaLista\model;
 
-use NomenaLista\model\AppModel;
-use NomenaLista\model\contracts\UsersInterface;
-use NomenaLista\lib\UsersLib;
-use NomenaLista\lib\ErrorsLib as Errors;
+use NomenaLista\model\App as model;
+use NomenaLista\model\contracts\Users as interface;
+use NomenaLista\lib\Users as lib;
+use NomenaLista\lib\Errors as Errors;
 
-class Users extends AppModel implements UsersInterface
+class Users extends model\App implements interface\Users
 {
     public $pk = 'email';
     public $Lib;
@@ -16,7 +16,7 @@ class Users extends AppModel implements UsersInterface
     {
         parent::__construct();
 
-        $this->Lib = new UsersLib;
+        $this->Lib = new lib\Users;
         $this->Errors = new Errors;
     }
 

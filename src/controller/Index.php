@@ -1,7 +1,7 @@
 <?php
 namespace NomenaLista\controller;
 
-class IndexController
+class Index
 {
 
   public function index($request, $response)

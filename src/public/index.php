@@ -23,9 +23,9 @@ $app->add(function ($req, $res, $next) {
 /*
 * Routes
 */
-$app->get('/', '\NomenaLista\controller\IndexController:index');
-$app->post('/login', '\NomenaLista\controller\LoginController:index');
-$app->post('/users', '\NomenaLista\controller\UsersController:add');
-$app->get('/errors', '\NomenaLista\controller\ErrorsController:index');
+$app->get('/', '\NomenaLista\controller\Index:index');
+$app->post('/login', '\NomenaLista\controller\Login:index');
+$app->post('/users', '\NomenaLista\controller\Users:add');
+$app->get('/errors', '\NomenaLista\controller\Errors:index');
 
 $app->run();

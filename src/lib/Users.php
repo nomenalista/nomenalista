@@ -2,7 +2,7 @@
 
 namespace NomenaLista\lib;
 
-class UsersLib {
+class Users {
 
     public function hash($value)
     {

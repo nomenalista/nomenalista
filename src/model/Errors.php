@@ -1,9 +1,9 @@
 <?php
 namespace NomenaLista\model;
 
-use NomenaLista\model\AppModel;
+use NomenaLista\model\App as model;
 
-class Errors extends AppModel
+class Errors extends model\App
 {
 
 }
