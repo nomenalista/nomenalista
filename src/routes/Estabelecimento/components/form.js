@@ -1,10 +1,20 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
+import {connect} from 'react-redux'
 
-const Form = (props) => {
-      const { handleSubmit, pristine, reset, submitting } = props
+let Form = (props) => {
+      const {handleSubmit, pristine, reset, submitting} = props
       return (
         <form onSubmit={handleSubmit} className="form-horizontal">
+            <div className="form-group">
+                <div className="col-md-10">
+                    <Field
+                        type="hidden"
+                        name="id"
+                        component="input"
+                        className="form-control" />
+                </div>
+            </div>
             <div className="form-group">
                 <label className="col-md-2">Nome</label>
                 <div className="col-md-10">
@@ -35,6 +45,13 @@ const Form = (props) => {
       )
 }
 
-export default reduxForm({
-  form: 'formEstabelecimento'
+const mapStateToProps = state => ({
+    initialValues : state.Estabelecimento.data
+})
+
+Form = reduxForm({
+  form : 'formEstabelecimento',
+  enableReinitialize : true
 })(Form)
+
+export default connect(mapStateToProps)(Form)
