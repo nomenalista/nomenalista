@@ -1,19 +1,17 @@
-import { browserHistory }   from 'react-router'
+import {browserHistory} from 'react-router'
 
 export const validateSession = isLogged => {
+  if (!isLogged) {
+    return browserHistory.push('/')
+  }
 
-    if ( ! isLogged) {
-        return browserHistory.push('/')
-    }
-
-    return true
+  return true
 }
 
 export const checkSession = isLogged => {
+  if (isLogged) {
+    return browserHistory.push('/home')
+  }
 
-    if (isLogged) {
-        return browserHistory.push('/home')
-    }
-
-    return false
+  return false
 }

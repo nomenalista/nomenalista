@@ -10,11 +10,11 @@ import './assets/index.css'
 * Redux
 */
 import {Provider} from 'react-redux'
-import {store} from  './modules'
+import {store} from './modules'
 
 render(
-    <Provider store={store}>
-        <Router history={browserHistory} routes={Routes} />
-    </Provider>,
+  <Provider store={store}>
+    <Router history={browserHistory} routes={Routes} />
+  </Provider>,
   document.getElementById('root')
 )

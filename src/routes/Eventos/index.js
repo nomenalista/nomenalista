@@ -1,10 +1,9 @@
 export default {
-    path : '/eventos',
+  path: '/eventos',
 
-    getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-            cb(null, require('./containers').default)
-        })
-    }
-
+  getComponent(nextState, cb) {
+    require.ensure([], require => {
+      cb(null, require('./containers').default)
+    })
+  }
 }
