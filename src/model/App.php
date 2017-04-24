@@ -6,6 +6,8 @@ use SimpleORM\core\model\Model;
 class App extends Model
 {
 
+    public $db_config;
+
     public function __construct()
     {
         parent::__construct();
