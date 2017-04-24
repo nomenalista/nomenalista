@@ -1,8 +1,7 @@
 <?php
 namespace NomenaLista\model\contracts;
 
-interface Users
+interface Events
 {
     public function store($data);
-    public function remove($id);
 }

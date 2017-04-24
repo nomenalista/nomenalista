@@ -10,7 +10,7 @@ class Errors {
 
     public function __construct()
     {
-        $this->Errors = new model\Errors;
+        $this->Errors = new model;
     }
 
     public function getError($id)

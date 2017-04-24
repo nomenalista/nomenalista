@@ -4,13 +4,13 @@ namespace NomenaLista\controller;
 
 use \NomenaLista\model\Errors as model;
 
-class Error {
+class Errors {
 
     protected $Errors;
 
     public function __construct()
     {
-        $this->Errors = new model\Errors;
+        $this->Errors = new model;
     }
 
     public function index($request, $response)

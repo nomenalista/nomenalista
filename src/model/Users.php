@@ -2,11 +2,11 @@
 namespace NomenaLista\model;
 
 use NomenaLista\model\App as model;
-use NomenaLista\model\contracts\Users as interface;
+use NomenaLista\model\contracts\Users as iUsers;
 use NomenaLista\lib\Users as lib;
 use NomenaLista\lib\Errors as Errors;
 
-class Users extends model\App implements interface\Users
+class Users extends model\App implements iUsers
 {
     public $pk = 'email';
     public $Lib;
