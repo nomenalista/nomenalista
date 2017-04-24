@@ -10,7 +10,7 @@ class App extends Model
     {
         parent::__construct();
 
-        $ths->db_config = [
+        $this->db_config = [
             'db_host' => getenv("DB_HOST"),
             'db_name' => getenv("DB_DATABASE"),
             'db_user' => getenv("DB_USERNAME"),
