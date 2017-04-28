@@ -18,14 +18,14 @@ const reducer = handleActions(
 
     [CADASTRO_SUCCESS]: (state, action) => ({
       ...state,
-      text: action.payload.msg,
+      text: 'Logando...',
       token: action.payload.token,
       sending: false
     }),
 
     [CADASTRO_ERROR]: (state, action) => ({
       ...state,
-      text: action.payload.msg,
+      text: action.payload.error.msg,
       sending: false
     })
   },

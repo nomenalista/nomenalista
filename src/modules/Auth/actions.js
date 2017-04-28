@@ -20,9 +20,9 @@ export const getLogin = () => {
 export const LOGGED_IN = 'modules/Auth/LOGGED_IN'
 export const LOGGED_OFF = 'modules/Auth/LOGGED_OFF'
 
-export const loggedIn = createAction(LOGGED_IN, token => {
-  localStorage.setItem('token', token)
-  return {token}
+export const loggedIn = createAction(LOGGED_IN, payload => {
+  localStorage.setItem('token', payload.token)
+  return payload
 })
 
 export const loggedOff = createAction(LOGGED_OFF, () => {

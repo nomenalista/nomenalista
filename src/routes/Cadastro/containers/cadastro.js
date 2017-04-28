@@ -2,14 +2,14 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Form from '../components/FormCadastro'
 import {sendFormCadastro} from './../../../modules/Cadastro/actions'
-import Alert from './../../../components/Alert'
-import Loader from './../../../components/Loader'
+import Alert from '../../../components/Alert'
+import Loader from '../../../components/Loader'
 import {validateSession} from './../../../components/Session'
 import {loggedIn} from './../../../modules/Auth/actions'
 
 class CadastroContainer extends Component {
-  handleSubmit(values, dispatch) {
-    sendFormCadastro(values, dispatch)
+  handleSubmit = values => {
+    this.props.dispatch(sendFormCadastro(values))
   }
 
   componentDidUpdate() {
@@ -23,7 +23,7 @@ class CadastroContainer extends Component {
 
   render() {
     const {text, enviando} = this.props
-    const status = text ? Alert(text) : null
+    const status = text && Alert(text)
     const loading = Loader()
     return (
       <div className="jumbotron">
@@ -39,11 +39,9 @@ class CadastroContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    ...state.Cadastro,
-    isLogged: state.Auth.isLogged
-  }
-}
+const mapStateToProps = state => ({
+  ...state.Cadastro,
+  isLogged: state.Auth.isLogged
+})
 
 export default connect(mapStateToProps)(CadastroContainer)

@@ -1,7 +1,5 @@
 import {createAction} from 'redux-actions'
-import axios from 'axios'
-
-import apiServer from './../server'
+import Request from '../service'
 
 export const ESTABELECIMENTO_SENDING = 'modules/Estabelecimento/SENDING'
 export const ESTABELECIMENTO_SUCCESS = 'modules/Estabelecimento/SUCCESS'
@@ -14,13 +12,13 @@ const estabelecimentoError = createAction(ESTABELECIMENTO_ERROR)
 export const sendForm = values => ({
   type: [estabelecimentoSending, estabelecimentoSuccess, estabelecimentoError],
   payload: {
-    data: () => axios.post(apiServer + '/companies', values)
+    data: () => Request({method: 'post', url: '/companies', data: values})
   }
 })
 
 export const getEstabelecimento = id => ({
   type: [estabelecimentoSending, estabelecimentoSuccess, estabelecimentoError],
   payload: {
-    data: () => axios.get(apiServer + '/companies/' + id)
+    data: () => Request(`/companies/${id}`)
   }
 })

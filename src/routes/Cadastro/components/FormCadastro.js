@@ -29,7 +29,7 @@ const Form = props => {
         <label>Estabelecimento</label>
         <Field
           type="text"
-          name="company_name"
+          name="company"
           component="input"
           placeholder="Nome do estabelecimento/casa"
           className="form-control"

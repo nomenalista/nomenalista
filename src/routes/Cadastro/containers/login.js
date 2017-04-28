@@ -2,12 +2,13 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Form from '../components/FormLogin'
 import {sendFormLogin} from '../../../modules/Login/actions'
-import {Alert, Loader} from '../../../components'
+import Loader from '../../../components/Loader'
+import Alert from '../../../components/Alert'
 import {checkSession} from './../../../components/Session'
 
 class LoginContainer extends Component {
-  handleSubmit(values, dispatch) {
-    return sendFormLogin(values, dispatch)
+  handleSubmit = values => {
+    this.props.dispatch(sendFormLogin(values))
   }
 
   componentDidUpdate() {
@@ -35,11 +36,9 @@ class LoginContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    ...state.Login,
-    isLogged: state.Auth.isLogged
-  }
-}
+const mapStateToProps = state => ({
+  ...state.Login,
+  isLogged: state.Auth.isLogged
+})
 
 export default connect(mapStateToProps)(LoginContainer)

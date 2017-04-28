@@ -2,7 +2,7 @@ import {combineReducers} from 'redux'
 import {reducer as formReducer} from 'redux-form'
 
 import {createStore, applyMiddleware, compose} from 'redux'
-import promiseMiddleware from 'redux-promise'
+import middlewareInjector from 'redux-middleware-injector'
 import fetchMiddleware from 'fetch-middleware'
 
 import Auth from './Auth'
@@ -22,7 +22,7 @@ export const store = createStore(
   combineReducer,
   {},
   compose(
-    applyMiddleware(promiseMiddleware, fetchMiddleware),
+    applyMiddleware(middlewareInjector, fetchMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )

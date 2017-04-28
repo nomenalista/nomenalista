@@ -10,7 +10,7 @@ export const validateSession = isLogged => {
 
 export const checkSession = isLogged => {
   if (isLogged) {
-    return browserHistory.push('/home')
+    return browserHistory.push('/#/home')
   }
 
   return false

@@ -1,8 +1,7 @@
-import axios from 'axios'
 import {createAction} from 'redux-actions'
 
-import apiServer from './../server'
 import {loggedIn} from './../Auth'
+import Request from '../service'
 
 export const LOGIN_SENDING = 'modules/Login/SENDING'
 export const LOGIN_SUCCESS = 'modules/Login/SUCCESS'
@@ -12,12 +11,13 @@ const loginSending = createAction(LOGIN_SENDING)
 const loginError = createAction(LOGIN_ERROR)
 const loginSuccess = createAction(LOGIN_SUCCESS)
 
-export const sendFormLogin = (values, dispatch) => {
-  dispatch(loginSending())
+export const sendFormLogin = values => store => {
+  const {dispatch} = store
 
-  axios
-    .post(apiServer + '/login', values)
-    .then(res => {
+  return next => action => {
+    dispatch(loginSending())
+
+    return Request({method: 'post', url: '/login', data: values}).then(res => {
       const {data} = res
 
       if (data.error) {
@@ -29,13 +29,7 @@ export const sendFormLogin = (values, dispatch) => {
       }
 
       dispatch(loginSuccess())
-      return dispatch(loggedIn(data.id))
+      return dispatch(loggedIn(data))
     })
-    .catch(err => {
-      dispatch(
-        loginError({
-          msg: 'Erro ao logar'
-        })
-      )
-    })
+  }
 }
