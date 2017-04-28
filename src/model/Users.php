@@ -1,12 +1,12 @@
 <?php
 namespace NomenaLista\model;
 
-use NomenaLista\model\App as model;
+use NomenaLista\model\App as App;
 use NomenaLista\model\contracts\Users as iUsers;
-use NomenaLista\lib\Users as lib;
+use NomenaLista\lib\Users as Lib;
 use NomenaLista\lib\Errors as Errors;
 
-class Users extends model\App implements iUsers
+class Users extends App implements iUsers
 {
     public $pk = 'email';
     public $Lib;
@@ -16,13 +16,19 @@ class Users extends model\App implements iUsers
     {
         parent::__construct();
 
-        $this->Lib = new lib\Users;
+        $this->Lib = new Lib;
         $this->Errors = new Errors;
     }
 
     public function store($data)
     {
-        return $this->save(self::hashPassword($data));
+        $this->save([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $this->Lib->hash($data['password'])
+        ]);
+
+        return $this->lastInsertId();
     }
 
     public function remove($id)
@@ -44,7 +50,8 @@ class Users extends model\App implements iUsers
 
         return [
             'isLogged' => true,
-            'token'    => $this->Lib->hash($data['id'])
+            'token'    => $this->Lib->hash($data['id']),
+            'company'  => $data['company_id']
         ];
     }
 
@@ -52,12 +59,4 @@ class Users extends model\App implements iUsers
     {
         return (password_verify($data['password'], $this->fetch()['password']));
     }
-
-    public function hashPassword($data)
-    {
-        return array_merge($data, [
-          'password' => $this->Lib->hash($data['password'])
-        ]);
-    }
-
 }

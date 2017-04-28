@@ -25,6 +25,7 @@ $app->add(function ($req, $res, $next) {
 */
 $app->get('/', '\NomenaLista\controller\Index:index');
 $app->post('/login', '\NomenaLista\controller\Login:index');
+$app->post('/register', '\NomenaLista\controller\Login:register');
 $app->post('/users', '\NomenaLista\controller\Users:add');
 $app->post('/companies', '\NomenaLista\controller\Companies:add');
 $app->get('/companies/{id}', '\NomenaLista\controller\Companies:get');

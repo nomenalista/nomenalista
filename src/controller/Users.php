@@ -1,7 +1,7 @@
 <?php
 namespace NomenaLista\controller;
 
-use \NomenaLista\model\Users as model;
+use \NomenaLista\model\Users as Model;
 use \NomenaLista\lib\Errors as Errors;
 
 class Users
@@ -11,7 +11,7 @@ class Users
 
   public function __construct()
   {
-      $this->Users = new model\Users;
+      $this->Users = new Model;
   }
 
   public function add($request, $response)
