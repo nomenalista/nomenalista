@@ -2,7 +2,7 @@ import React from 'react'
 import CadastroContainer from './containers/cadastro'
 import LoginContainer from './containers/login'
 
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/img/logo.png'
 
 const CadastroLogin = () => (
   <div className="container">

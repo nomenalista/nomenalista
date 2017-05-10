@@ -7,9 +7,7 @@ import Alert from '../../../components/Alert'
 import {checkSession} from './../../../components/Session'
 
 class LoginContainer extends Component {
-  handleSubmit = values => {
-    this.props.dispatch(sendFormLogin(values))
-  }
+  handleSubmit = values => this.props.dispatch(sendFormLogin(values))
 
   componentDidUpdate() {
     const {isLogged} = this.props
@@ -36,9 +34,6 @@ class LoginContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state.Login,
-  isLogged: state.Auth.isLogged
-})
+const mapStateToProps = state => state.Login
 
 export default connect(mapStateToProps)(LoginContainer)

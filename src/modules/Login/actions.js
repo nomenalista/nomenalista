@@ -1,6 +1,5 @@
 import {createAction} from 'redux-actions'
 
-import {loggedIn} from './../Auth'
 import Request from '../service'
 
 export const LOGIN_SENDING = 'modules/Login/SENDING'
@@ -11,25 +10,9 @@ const loginSending = createAction(LOGIN_SENDING)
 const loginError = createAction(LOGIN_ERROR)
 const loginSuccess = createAction(LOGIN_SUCCESS)
 
-export const sendFormLogin = values => store => {
-  const {dispatch} = store
-
-  return next => action => {
-    dispatch(loginSending())
-
-    return Request({method: 'post', url: '/login', data: values}).then(res => {
-      const {data} = res
-
-      if (data.error) {
-        return dispatch(
-          loginError({
-            msg: data.error.msg
-          })
-        )
-      }
-
-      dispatch(loginSuccess())
-      return dispatch(loggedIn(data))
-    })
+export const sendFormLogin = values => ({
+  type: [loginSending, loginError, loginSuccess],
+  payload: {
+    data: () => Request({method: 'post', url: '/login', data: values})
   }
-}
+})

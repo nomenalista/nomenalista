@@ -5,18 +5,14 @@ import {sendFormCadastro} from './../../../modules/Cadastro/actions'
 import Alert from '../../../components/Alert'
 import Loader from '../../../components/Loader'
 import {validateSession} from './../../../components/Session'
-import {loggedIn} from './../../../modules/Auth/actions'
 
 class CadastroContainer extends Component {
-  handleSubmit = values => {
-    this.props.dispatch(sendFormCadastro(values))
-  }
+  handleSubmit = values => this.props.dispatch(sendFormCadastro(values))
 
   componentDidUpdate() {
-    const {token, isLogged, dispatch} = this.props
+    const {isLogged} = this.props
 
-    if (token) {
-      dispatch(loggedIn({token}))
+    if (isLogged) {
       return validateSession(isLogged)
     }
   }
@@ -41,7 +37,7 @@ class CadastroContainer extends Component {
 
 const mapStateToProps = state => ({
   ...state.Cadastro,
-  isLogged: state.Auth.isLogged
+  isLogged: state.Login.isLogged
 })
 
 export default connect(mapStateToProps)(CadastroContainer)

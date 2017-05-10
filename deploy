@@ -1,0 +1,14 @@
+#!/bin/bash
+
+npm run build
+
+cd /Users/arojunior/Dropbox/compartilhado/Github/nomenalista.github.io
+rm -rf static
+rm index.html
+rm asset.manifest.json
+
+cp -R /Users/arojunior/Dropbox/compartilhado/Github/nome-na-lista-front/build/* .
+
+git add .
+git commit -m "build"
+git push origin master

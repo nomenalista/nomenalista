@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo from '../../assets/logo.png'
+import logo from '../../assets/img/logo.png'
 
 const Home = () => (
   <div className="col-md-3 col-md-offset-3">

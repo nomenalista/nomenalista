@@ -3,12 +3,10 @@ import {render} from 'react-dom'
 import {Router, hashHistory} from 'react-router'
 
 import Routes from './routes'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './assets/index.css'
 
-/*
-* Redux
-*/
+import './assets/css/bootstrap.min.css'
+import './assets/css/index.css'
+
 import {Provider} from 'react-redux'
 import {store} from './modules'
 

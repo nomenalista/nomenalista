@@ -1,5 +1,6 @@
 {
   "name": "nomenalista",
+  "homepage": "https://nomenalista.github.io",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -27,6 +28,7 @@
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.10.0",
     "fs-extra": "0.30.0",
+    "gh-pages": "^0.12.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.3",
     "jest": "18.1.0",
@@ -44,23 +46,25 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "bootstrap": "^3.3.7",
     "fetch-middleware": "^1.0.3",
     "ramda": "^0.23.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
-    "react-router": "^2.8.1",
+    "react-router": "^3.0.5",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.1",
     "redux-form": "^6.5.0",
+    "redux-localstore": "^0.1.4",
     "redux-middleware-injector": "^1.0.1",
     "redux-promise": "^0.5.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [

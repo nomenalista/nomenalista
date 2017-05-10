@@ -10,7 +10,8 @@ class Estabelecimento extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(actions.getEstabelecimento(1))
+    const {dispatch, company_id} = this.props
+    dispatch(actions.getEstabelecimento(company_id))
   }
 
   render() {
@@ -22,4 +23,8 @@ class Estabelecimento extends Component {
   }
 }
 
-export default connect()(Estabelecimento)
+const mapStateToProps = state => ({
+  company_id: state.Login.company_id
+})
+
+export default connect(mapStateToProps)(Estabelecimento)
