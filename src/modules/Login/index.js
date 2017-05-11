@@ -11,9 +11,9 @@ const defaultState = {
   isLogged: false
 }
 
-const initialState = defineState(defaultState, 'Login')
+const initialState = defineState(defaultState)('Login')
 
-const reducer = handleActions(
+export default handleActions(
   {
     [LOGIN_SENDING]: (state, action) => ({
       ...state,
@@ -24,18 +24,17 @@ const reducer = handleActions(
     [LOGIN_SUCCESS]: (state, action) => ({
       ...state,
       sending: false,
-      company_id: action.payload.company_id,
-      user_id: action.payload.user_id,
-      isLogged: true
+      company_id: action.payload.data.company_id,
+      user_id: action.payload.data.user_id,
+      isLogged: true,
+      text: null
     }),
 
     [LOGIN_ERROR]: (state, action) => ({
       ...state,
-      text: action.error.msg,
+      text: null,
       sending: false
     })
   },
   initialState
 )
-
-export default reducer

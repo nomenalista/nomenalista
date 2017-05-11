@@ -7,7 +7,7 @@ const initialState = {
   sending: false
 }
 
-const reducer = handleActions(
+export default handleActions(
   {
     [EVENTO_SENDING]: (state, action) => ({
       ...state,
@@ -27,5 +27,3 @@ const reducer = handleActions(
   },
   initialState
 )
-
-export default reducer

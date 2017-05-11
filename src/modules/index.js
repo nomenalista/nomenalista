@@ -9,12 +9,14 @@ import storeSynchronize from 'redux-localstore'
 import Cadastro from './Cadastro'
 import Login from './Login'
 import Estabelecimento from './Estabelecimento'
+import Eventos from './Eventos'
 
 const combineReducer = combineReducers({
   form: formReducer,
   Login,
   Cadastro,
-  Estabelecimento
+  Estabelecimento,
+  Eventos
 })
 
 export const store = createStore(

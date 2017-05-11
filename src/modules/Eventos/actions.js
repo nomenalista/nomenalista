@@ -1,7 +1,5 @@
 import {createAction} from 'redux-actions'
-import axios from 'axios'
-
-import apiServer from './../server'
+import Request from '../service'
 
 export const EVENTO_SENDING = 'modules/Evento/SENDING'
 export const EVENTO_SUCCESS = 'modules/Evento/SUCCESS'
@@ -14,20 +12,21 @@ const eventoError = createAction(EVENTO_ERROR)
 export const sendForm = values => ({
   type: [eventoSending, eventoSuccess, eventoError],
   payload: {
-    data: () => axios.post(apiServer + '/events', values)
+    data: () => Request({method: 'post', url: '/events', data: values})
   }
 })
 
 export const getEvento = id => ({
   type: [eventoSending, eventoSuccess, eventoError],
   payload: {
-    data: () => axios.get(apiServer + '/events/' + id)
+    data: () => Request(`/events/${id}`)
   }
 })
 
-export const getEventos = () => ({
+export const getEventos = company_id => ({
   type: [eventoSending, eventoSuccess, eventoError],
   payload: {
-    data: () => axios.get(apiServer + '/events')
+    data: () =>
+      Request({method: 'get', url: '/events', data: {company_id: company_id}})
   }
 })
