@@ -2,15 +2,20 @@ import axios from 'axios'
 import apiServer from './server'
 import {getState} from 'redux-localstore'
 
-const {company_id, user_id} = getState().Login
+const loginState = getState().Login
 
-const auth = JSON.stringify({
-  company_id,
-  user_id
-})
+if (loginState) {
+  const {company_id, user_id} = loginState
+
+  const auth = JSON.stringify({
+    company_id,
+    user_id
+  })
+
+  axios.defaults.headers.common['Authorization'] = auth
+}
 
 axios.defaults.baseURL = apiServer
-axios.defaults.headers.common['Authorization'] = auth
 
 export default (request, data = null) => {
   if (typeof request !== 'object') {

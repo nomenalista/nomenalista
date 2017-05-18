@@ -1,11 +1,12 @@
-import {browserHistory} from 'react-router'
+import React from 'react'
+import {browserHistory, Redirect} from 'react-router'
+import {store} from '../modules'
 
-export const validateSession = isLogged => {
-  if (!isLogged) {
-    return browserHistory.push('/')
+export default Component => {
+  if (!store.getState().Login.isLogged) {
+    return <Redirect to="/" />
   }
-
-  return true
+  return Component
 }
 
 export const checkSession = isLogged => {

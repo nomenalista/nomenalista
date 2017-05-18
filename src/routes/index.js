@@ -5,6 +5,8 @@ import {Eventos, EventoNovo} from './Eventos/routes'
 import Estabelecimento from './Estabelecimento/routes'
 import CadastroLogin from './Cadastro'
 
+import Session from '../components/Session'
+
 const Routes = [
   {
     path: '/',
@@ -14,7 +16,11 @@ const Routes = [
     path: '/home',
     component: Layout,
     indexRoute: Home,
-    childRoutes: [Estabelecimento, Eventos, EventoNovo]
+    childRoutes: [
+      Session(Estabelecimento),
+      Session(Eventos),
+      Session(EventoNovo)
+    ]
   }
 ]
 
