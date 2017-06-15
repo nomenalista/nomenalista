@@ -1,30 +1,32 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
+import renderField from 'redux-form-field-wrapper'
+
+const defaultConfig = {
+  divClass: 'form-group',
+  component: renderField
+}
 
 const Form = props => {
   const {handleSubmit, pristine, reset, submitting} = props
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label>E-mail</label>
-        <Field
-          type="text"
-          name="email"
-          component="input"
-          placeholder="E-mail ou Telefone"
-          className="form-control"
-        />
-      </div>
-      <div className="form-group">
-        <label>Senha</label>
-        <Field
-          type="password"
-          name="password"
-          component="input"
-          placeholder="Senha"
-          className="form-control"
-        />
-      </div>
+      <Field
+        type="text"
+        name="email"
+        label="E-mail"
+        placeholder="E-mail ou Telefone"
+        {...defaultConfig}
+      />
+
+      <Field
+        type="password"
+        name="password"
+        label="Senha"
+        placeholder="Senha"
+        {...defaultConfig}
+      />
+
       <div className="form-group">
         <button
           type="submit"

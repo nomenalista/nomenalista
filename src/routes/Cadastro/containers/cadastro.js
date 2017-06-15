@@ -1,43 +1,38 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
+import {compose, withHandlers, lifecycle} from 'recompose'
+
 import Form from '../components/FormCadastro'
+import {Loader, Alert} from '../../../components/Bootstrap'
 import {sendFormCadastro} from './../../../modules/Cadastro/actions'
-import Alert from '../../../components/Alert'
-import Loader from '../../../components/Loader'
 import {checkSession} from './../../../components/Session'
 
-class CadastroContainer extends Component {
-  handleSubmit = values => this.props.dispatch(sendFormCadastro(values))
-
-  componentDidUpdate() {
-    const {isLogged} = this.props
-
-    if (isLogged) {
-      return checkSession(isLogged)
-    }
-  }
-
-  render() {
-    const {text, enviando} = this.props
-    const status = text && Alert(text)
-    const loading = Loader()
-    return (
-      <div className="jumbotron">
-        <div className="row text-center">
-          <h2>Ainda não possui cadastro?</h2>
-        </div>
-        <Form onSubmit={this.handleSubmit} />
-        <div>
-          {enviando ? loading : status}
-        </div>
+const CadastroContainer = ({handleSubmit, text, enviando}) => {
+  const status = text && Alert(text)
+  return (
+    <div className="jumbotron">
+      <div className="row text-center">
+        <h2>Ainda não possui cadastro?</h2>
       </div>
-    )
-  }
+      <Form onSubmit={handleSubmit} />
+      <div>
+        {enviando ? Loader() : status}
+      </div>
+    </div>
+  )
 }
 
-const mapStateToProps = state => ({
-  ...state.Cadastro,
-  isLogged: state.Login.isLogged
-})
-
-export default connect(mapStateToProps)(CadastroContainer)
+export default compose(
+  connect(state => ({
+    ...state.Cadastro,
+    isLogged: state.Login.isLogged
+  })),
+  withHandlers({
+    handleSubmit: props => values => props.dispatch(sendFormCadastro(values))
+  }),
+  lifecycle({
+    componentDidUpdate() {
+      checkSession()
+    }
+  })
+)(CadastroContainer)

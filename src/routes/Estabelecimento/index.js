@@ -22,7 +22,7 @@ export default compose(
     handleSubmit: props => values => props.dispatch(sendForm(values))
   }),
   lifecycle({
-    componentWillMount() {
+    componentDidMount() {
       const {company_id, dispatch} = this.props
       dispatch(getEstabelecimento(company_id))
     }
