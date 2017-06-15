@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default (msg, classe) => {
+export const Alert = (msg, classe) => {
   const alertclass = classe ? 'alert alert-' + classe : 'alert alert-warning'
 
   return (
@@ -16,3 +16,10 @@ export default (msg, classe) => {
     </div>
   )
 }
+
+export const Loader = () =>
+  <div>
+    <img src="/images/ajax-loader.gif" alt="loader" />
+  </div>
+
+export const Spinner = () => Alert('Is fetching...')

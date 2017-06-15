@@ -4,7 +4,7 @@ import Form from '../components/FormCadastro'
 import {sendFormCadastro} from './../../../modules/Cadastro/actions'
 import Alert from '../../../components/Alert'
 import Loader from '../../../components/Loader'
-import {validateSession} from './../../../components/Session'
+import {checkSession} from './../../../components/Session'
 
 class CadastroContainer extends Component {
   handleSubmit = values => this.props.dispatch(sendFormCadastro(values))
@@ -13,7 +13,7 @@ class CadastroContainer extends Component {
     const {isLogged} = this.props
 
     if (isLogged) {
-      return validateSession(isLogged)
+      return checkSession(isLogged)
     }
   }
 

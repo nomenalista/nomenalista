@@ -1,35 +1,30 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import {compose, withHandlers, lifecycle} from 'recompose'
 
 import Form from './components/Form'
-import * as actions from '../../modules/Estabelecimento/actions'
+import {
+  sendForm,
+  getEstabelecimento
+} from '../../modules/Estabelecimento/actions'
 
-class Estabelecimento extends Component {
-  handleSubmit = values => this.props.sendForm(values)
+const Estabelecimento = ({handleSubmit, form_data}) =>
+  <div>
+    <Form onSubmit={handleSubmit} initialValues={form_data} />
+  </div>
 
-  componentWillMount() {
-    const {getEstabelecimento, company_id} = this.props
-    getEstabelecimento(company_id)
-  }
-
-  render() {
-    return (
-      <div>
-        <Form
-          onSubmit={this.handleSubmit}
-          initialValues={this.props.form_data}
-        />
-      </div>
-    )
-  }
-}
-
-const mapStateToProps = state => ({
-  company_id: state.Login.company_id,
-  form_data: state.Estabelecimento.data
-})
-
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(Estabelecimento)
+export default compose(
+  connect(state => ({
+    company_id: state.Login.company_id,
+    form_data: state.Estabelecimento.data
+  })),
+  withHandlers({
+    handleSubmit: props => values => props.dispatch(sendForm(values))
+  }),
+  lifecycle({
+    componentWillMount() {
+      const {company_id, dispatch} = this.props
+      dispatch(getEstabelecimento(company_id))
+    }
+  })
+)(Estabelecimento)

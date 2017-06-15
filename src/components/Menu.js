@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router'
+import {pure} from 'recompose'
 
-export default () => (
+const Menu = () =>
   <div className="list-group">
     <Link to="/estabelecimento" className="list-group-item">
       Estabelecimento
@@ -12,4 +13,4 @@ export default () => (
     <a href="#" className="list-group-item">Benefícios</a>
     <a href="#" className="list-group-item">Usuários</a>
   </div>
-)
+export default pure(Menu)

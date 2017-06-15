@@ -10,11 +10,7 @@ class LoginContainer extends Component {
   handleSubmit = values => this.props.dispatch(sendFormLogin(values))
 
   componentDidUpdate() {
-    const {isLogged} = this.props
-
-    if (isLogged) {
-      return checkSession(isLogged)
-    }
+    checkSession()
   }
 
   render() {

@@ -2,8 +2,9 @@ import React from 'react'
 
 import Navigation from './../components/Navigation'
 import Menu from './../components/Menu'
+import Session from '../components/Session'
 
-const Layout = ({children}) => (
+const Layout = ({children}) =>
   <div>
     <Navigation />
     <div className="container-fluid">
@@ -14,13 +15,12 @@ const Layout = ({children}) => (
         <div className="col-lg-9">
           <div className="panel panel-primary">
             <div className="panel-body">
-              {children}
+              {Session(children)}
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-)
 
 export default Layout
