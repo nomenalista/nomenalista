@@ -25,7 +25,7 @@ class Login
       $token = $this->Users->login($data);
 
       if (isset($token['error'])) {
-         return $response->withJson($token, 401);
+         return $response->withJson($token);
       }
 
       return $response->withJson($token);

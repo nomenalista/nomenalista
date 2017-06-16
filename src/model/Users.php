@@ -50,8 +50,8 @@ class Users extends App implements iUsers
 
         return [
             'isLogged' => true,
-            'token'    => $this->Lib->hash($data['id']),
-            'company'  => $data['company_id']
+            'user_id'  => $data['id'],
+            'company_id' => $data['company_id']
         ];
     }
 
