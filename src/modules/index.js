@@ -1,7 +1,5 @@
-import {combineReducers} from 'redux'
+import {combineReducers, createStore, applyMiddleware, compose} from 'redux'
 import {reducer as formReducer} from 'redux-form'
-
-import {createStore, applyMiddleware, compose} from 'redux'
 import middlewareInjector from 'redux-middleware-injector'
 import fetchMiddleware from 'fetch-middleware'
 import storeSynchronize from 'redux-localstore'
@@ -19,7 +17,7 @@ const combineReducer = combineReducers({
   Eventos
 })
 
-export const store = createStore(
+const store = createStore(
   combineReducer,
   {},
   compose(
@@ -29,3 +27,5 @@ export const store = createStore(
 )
 
 storeSynchronize(store)
+
+export default store
