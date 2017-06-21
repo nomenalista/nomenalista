@@ -1,11 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {compose, withHandlers, lifecycle} from 'recompose'
+import {compose, withHandlers} from 'recompose'
 
 import Form from '../components/FormLogin'
 import {Loader, Alert} from '../../../components/Bootstrap'
 import {sendFormLogin} from '../../../modules/Login/actions'
-import {checkSession} from './../../../components/Session'
 
 const LoginContainer = ({handleSubmit, text, enviando}) => {
   const status = text ? Alert(text) : null
@@ -24,10 +23,5 @@ export default compose(
   connect(state => state.Login),
   withHandlers({
     handleSubmit: props => values => props.dispatch(sendFormLogin(values))
-  }),
-  lifecycle({
-    componentDidUpdate() {
-      checkSession()
-    }
   })
 )(LoginContainer)

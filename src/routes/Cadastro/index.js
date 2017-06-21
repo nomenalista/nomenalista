@@ -1,10 +1,13 @@
 import React from 'react'
+import {compose, lifecycle} from 'recompose'
+import {browserHistory} from 'react-router'
+import {connect} from 'react-redux'
+
 import CadastroContainer from './containers/cadastro'
 import LoginContainer from './containers/login'
-
 import Logo from '../../assets/img/logo.png'
 
-const CadastroLogin = () => (
+const CadastroLogin = () =>
   <div className="container">
     <div className="row">
       <div className="col-md-4 col-md-offset-4">
@@ -21,6 +24,19 @@ const CadastroLogin = () => (
       </div>
     </div>
   </div>
-)
 
-export default CadastroLogin
+export default compose(
+  connect(state => state.Login),
+  lifecycle({
+    componentWillMount() {
+      if (this.props.isLogged) {
+        browserHistory.push('#/home')
+      }
+    },
+    componentDidUpdate() {
+      if (this.props.isLogged) {
+        browserHistory.push('#/home')
+      }
+    }
+  })
+)(CadastroLogin)
