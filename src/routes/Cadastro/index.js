@@ -3,8 +3,8 @@ import {compose, lifecycle} from 'recompose'
 import {browserHistory} from 'react-router'
 import {connect} from 'react-redux'
 
-import CadastroContainer from './containers/cadastro'
-import LoginContainer from './containers/login'
+import CadastroContainer from './containers/Cadastro'
+import LoginContainer from './containers/Login'
 import Logo from '../../assets/img/logo.png'
 
 const CadastroLogin = () =>
@@ -25,18 +25,17 @@ const CadastroLogin = () =>
     </div>
   </div>
 
+const checkSession = isLogged =>
+  isLogged ? browserHistory.push('#/home') : null
+
 export default compose(
   connect(state => state.Login),
   lifecycle({
-    componentWillMount() {
-      if (this.props.isLogged) {
-        browserHistory.push('#/home')
-      }
+    componentDidMount() {
+      checkSession(this.props.isLogged)
     },
     componentDidUpdate() {
-      if (this.props.isLogged) {
-        browserHistory.push('#/home')
-      }
+      checkSession(this.props.isLogged)
     }
   })
 )(CadastroLogin)

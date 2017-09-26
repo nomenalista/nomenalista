@@ -13,7 +13,7 @@ export const EventoNovo = {
 
   getComponent(nextState, cb) {
     require.ensure([], require => {
-      cb(null, require('./containers/novo').default)
+      cb(null, require('./containers/Novo').default)
     })
   }
 }

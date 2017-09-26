@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import {compose, lifecycle} from 'recompose'
 
-import List from './components/list'
+import List from './components/List'
 import {getEventos} from '../../modules/Eventos/actions'
 
 const Eventos = ({eventos}) =>

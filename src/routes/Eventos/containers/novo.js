@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router'
-import Form from '../components/form'
+import Form from '../components/Form'
 
-const EventoNovo = () => (
+const EventoNovo = () =>
   <div>
     <p className="pull-right">
       <Link to="/eventos" className="btn btn-default">Voltar</Link>
@@ -13,6 +13,5 @@ const EventoNovo = () => (
       </div>
     </div>
   </div>
-)
 
 export default EventoNovo
