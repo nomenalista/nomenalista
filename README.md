@@ -1,3 +1,10 @@
-Free application to manage guest list for your parties
+# Free application to manage guest list for your parties
 
-### Try it on: [https://nomenalista.github.io](https://nomenalista.github.io/) 
+### Stack
+
+- PHP 7
+- Mysql
+- Javascript / ReactJs
+- Docker
+
+***Under development***
