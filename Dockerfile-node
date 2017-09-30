@@ -1,0 +1,17 @@
+FROM nginx:latest
+RUN mkdir /code
+WORKDIR /code
+COPY ./client /code/
+
+# Node dependencies
+RUN apt-get update && apt-get install -y \
+	curl \
+	python \
+	make \
+	g++ \
+  gnupg
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get update && apt-get install -y \
+	  nodejs
+RUN npm install \
+    && npm run build

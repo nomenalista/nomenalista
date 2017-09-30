@@ -11,10 +11,10 @@ class App extends Model
     public function __construct()
     {            
         $this->db_config = [
-            'db_host' => getenv("DB_HOST"),
-            'db_name' => getenv("DB_DATABASE"),
-            'db_user' => getenv("DB_USERNAME"),
-            'db_pass' => getenv("DB_PASSWORD")
+            'db_host' => 'mysql',
+            'db_name' => 'mydb',
+            'db_user' => 'user',
+            'db_pass' => 'user'
         ];
 
         parent::__construct();

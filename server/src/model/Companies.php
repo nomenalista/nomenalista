@@ -10,7 +10,7 @@ class Companies extends App implements iCompanies
     public function store($data)
     {
         $this->save($data);
-        return $this->lastInsertId();
+        return $this->lastSavedId();
     }
 
 }

@@ -28,7 +28,7 @@ class Users extends App implements iUsers
             'password' => $this->Lib->hash($data['password'])
         ]);
 
-        return $this->lastInsertId();
+        return $this->lastSavedId();
     }
 
     public function remove($id)
